@@ -8,11 +8,11 @@
   </div>
 </template>
 
-<script lang='ts'>
+<script>
 import { computed, ref } from "vue";
 import { shuffle } from "lodash";
 import { DoughnutChart, useDoughnutChart } from "vue-chart-3";
-import { Chart, ChartData, ChartOptions, registerables } from "chart.js";
+import { Chart, registerables } from "chart.js";
 
 Chart.register(...registerables);
 
@@ -23,7 +23,7 @@ export default {
     const dataValues = ref([30, 40, 60, 70, 5]);
     const toggleLegend = ref(true);
 
-    const testData = computed<ChartData<"doughnut">>(() => ({
+    const testData = computed(() => ({
       labels: ["Paris", "Nîmes", "Toulon", "Perpignan", "Autre"],
       datasets: [
         {
@@ -39,7 +39,7 @@ export default {
       ],
     }));
 
-    const options = computed<ChartOptions<"doughnut">>(() => ({
+    const options = computed(() => ({
       scales: {
         myScale: {
           type: "logarithmic",
